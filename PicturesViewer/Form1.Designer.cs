@@ -139,7 +139,7 @@ namespace PicturesViewer
             this.Name = "Form1";
             this.Text = "Visor de imágenes";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,11 +150,11 @@ namespace PicturesViewer
         private System.Windows.Forms.Button btnAbrir;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblDir;
         internal System.Windows.Forms.Button btnAvance;
         internal System.Windows.Forms.Button btnRetroceso;
         internal System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.ToolTip toolTip1;
+        internal System.Windows.Forms.Label lblDir;
     }
 }
 

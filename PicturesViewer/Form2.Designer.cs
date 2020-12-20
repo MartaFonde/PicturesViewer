@@ -99,7 +99,9 @@ namespace PicturesViewer
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "NombreImagen";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown);
+            this.Activated += new System.EventHandler(this.Form2_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -110,8 +112,8 @@ namespace PicturesViewer
 
         internal System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem siguienteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem anteriorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
+        internal System.Windows.Forms.ToolStripMenuItem siguienteToolStripMenuItem;
+        internal System.Windows.Forms.ToolStripMenuItem anteriorToolStripMenuItem;
     }
 }

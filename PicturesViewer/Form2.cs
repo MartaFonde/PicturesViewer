@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace PicturesViewer
@@ -13,38 +7,55 @@ namespace PicturesViewer
     public partial class Form2 : Form
     {
         Form1 f1;
+        internal FileInfo file;
+        FileInfo[] files;
+
         public Form2(Form1 f1)
         {
             InitializeComponent();
             this.f1 = f1;
+            file = f1.file;
         }
 
         private void cambioImagen(object sender, EventArgs e)
         {
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            if(item.Tag.ToString() == "siguiente")
-            {
-                f1.btnAvance.PerformClick();
-            }
-            else 
-            {
-                f1.btnRetroceso.PerformClick();
-            }
+            DirectoryInfo dir = new DirectoryInfo(file.DirectoryName);
+            files = dir.GetFiles();
+            f1.pasarImagen(files, item.Tag.ToString());            
         }
 
         private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {            
+            this.Close();
+        }
+
+        private void Form2_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.A)
+            {
+                siguienteToolStripMenuItem.PerformClick();
+            }
+            else if (e.KeyCode == Keys.D)
+            {
+                anteriorToolStripMenuItem.PerformClick();
+            }
+        }
+
+        private void Form2_Activated(object sender, EventArgs e)
+        {
+            f1.file = file;
+            f1.f2 = this;
+            f1.infoFile(file);
+        }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
             f1.file = null;
             f1.lblInfo.Text = "";
             f1.Text = f1.titulo;
-            f1.btnAvance.Enabled = false;
-            f1.btnRetroceso.Enabled = false;
-            this.Close();
-        }
-
-        private void Form2_KeyDown(object sender, KeyEventArgs e)
-        {
-            f1.Form1_KeyDown(sender, e);
+            f1.lblInfo.Text = "";
+            f1.lblDir.Text = "";
         }
     }
 }
