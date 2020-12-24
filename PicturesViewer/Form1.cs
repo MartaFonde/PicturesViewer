@@ -81,6 +81,7 @@ namespace PicturesViewer
         internal void infoFile(FileInfo file)
         {
             bool otrasImgDir = false;
+
             this.Text = titulo + " - " + file.Name;
             lblDir.Text = file.DirectoryName;
             lblInfo.Text = string.Format("Nombre: {1}{0}Tamaño: {2}{0}Resolución horizontal: {3} ppp{0}" +
@@ -95,18 +96,22 @@ namespace PicturesViewer
 
             dir = new DirectoryInfo(file.DirectoryName);
             files = dir.GetFiles();
-            for (int i = 0; i < files.Length && !otrasImgDir; i++)
+            if(files.Length > 1)
             {
-                if(files[i].FullName != file.FullName && (files[i].Extension == ".jpeg" || files[i].Extension == ".jpg" || files[i].Extension == ".bmp" ||
-                    files[i].Extension == ".png" || files[i].Extension == ".gif" || files[i].Extension == ".ico"))
+                for (int i = 0; i < files.Length && !otrasImgDir; i++)
                 {
-                    btnAvance.Enabled = true;
-                    btnRetroceso.Enabled = true;
-                    f2.siguienteToolStripMenuItem.Enabled = true;
-                    f2.anteriorToolStripMenuItem.Enabled = true;
-                    otrasImgDir = true;
+                    if (files[i].FullName != file.FullName && (files[i].Extension == ".jpeg" || files[i].Extension == ".jpg" || files[i].Extension == ".bmp" ||
+                        files[i].Extension == ".png" || files[i].Extension == ".gif" || files[i].Extension == ".ico"))
+                    {
+                        btnAvance.Enabled = true;
+                        btnRetroceso.Enabled = true;
+                        f2.siguienteToolStripMenuItem.Enabled = true;
+                        f2.anteriorToolStripMenuItem.Enabled = true;
+                        otrasImgDir = true;
+                    }
                 }
             }
+            
             if (!otrasImgDir)
             {
                 btnAvance.Enabled = false;

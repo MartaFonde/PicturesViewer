@@ -65,7 +65,7 @@ namespace PicturesViewer
             // 
             this.siguienteToolStripMenuItem.Name = "siguienteToolStripMenuItem";
             this.siguienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.siguienteToolStripMenuItem.Tag = "siguiente";
+            this.siguienteToolStripMenuItem.Tag = "";
             this.siguienteToolStripMenuItem.Text = "Siguiente";
             this.siguienteToolStripMenuItem.ToolTipText = "Muestra la siguiente imagen";
             this.siguienteToolStripMenuItem.Click += new System.EventHandler(this.cambioImagen);
@@ -74,7 +74,7 @@ namespace PicturesViewer
             // 
             this.anteriorToolStripMenuItem.Name = "anteriorToolStripMenuItem";
             this.anteriorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.anteriorToolStripMenuItem.Tag = "anterior";
+            this.anteriorToolStripMenuItem.Tag = "";
             this.anteriorToolStripMenuItem.Text = "Anterior";
             this.anteriorToolStripMenuItem.ToolTipText = "Muestra la imagen anterior";
             this.anteriorToolStripMenuItem.Click += new System.EventHandler(this.cambioImagen);

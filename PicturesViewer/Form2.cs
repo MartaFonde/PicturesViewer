@@ -13,7 +13,11 @@ namespace PicturesViewer
         public Form2(Form1 f1)
         {
             InitializeComponent();
+
             this.f1 = f1;
+
+            siguienteToolStripMenuItem.Tag = f1.btnAvance.Tag.ToString();
+            anteriorToolStripMenuItem.Tag = f1.btnRetroceso.Tag.ToString();
             file = f1.file;
         }
 
